@@ -1,30 +1,6 @@
 /* eslint-disable */
-import domElements from './utils/domElements.js';
-
-console.log(domElements);
-function component(strings, ...dynamic) {
-  return function (props) {
-    let newContent = strings.slice();
-    dynamic.forEach((val, i) => {
-      newContent[i] += props[val];
-    });
-    return newContent.join('');
-  };
-}
-
-function render(component, container) {
-  container.innerHTML += component;
-}
-
-const styled = {
-  h1(styles) {
-    return (content) => `
-        <h1 style="${styles}">
-          ${content}
-        </h1>
-      `;
-  },
-};
+import { styled, Title } from './utils/styled-components.js';
+import { render } from './utils/simpleReact.js';
 
 const TitleStyled = styled.h1`
   color: #f2ffff;
@@ -32,9 +8,5 @@ const TitleStyled = styled.h1`
   text-shadow: 8px 6px 0 black;
 `;
 
-const props = {
-  message: 'No te rindas',
-};
-const title = component`<div>${'message'}</div>`(props);
 
-render(TitleStyled(title), document.getElementById('root'));
+render(TitleStyled(Title), document.getElementById('root'));
