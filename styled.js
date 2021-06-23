@@ -1,4 +1,4 @@
-/* eslint disable */
+/* eslint-disable */
 import domElements from './utils/domElements.js';
 
 console.log(domElements);
